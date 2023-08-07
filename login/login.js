@@ -45,22 +45,22 @@ function loadLogin(){
     </div>`
 }
 function checkUser(){
-        let data = {
-            username: document.getElementById('username').value,
-            password: document.getElementById('password').value
-        };
+    let data = {
+        username: document.getElementById('username').value,
+        password: document.getElementById('password').value
+    };
     console.log(data)
-        axios.post('http://localhost:3000/login', data).then(res => {
-            let token = res.data
-            console.log(token)
-            axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
-            // Xử lý dữ liệu trả về từ server nếu cần
-            alert('Đăng nhập thành công!');
-            loadTrades();
-        }).catch(error => {
-            console.error(error);
-            alert('Đăng nhập không thành công. Vui lòng kiểm tra tên đăng nhập và mật khẩu và thử lại sau.');
-        });
+    axios.post('http://localhost:3000/login', data).then(res => {
+        let token = res.data
+        console.log(token)
+        axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
+        // Xử lý dữ liệu trả về từ server nếu cần
+        alert('Đăng nhập thành công!');
+        loadTrades();
+    }).catch(error => {
+        console.error(error);
+        alert('Đăng nhập không thành công. Vui lòng kiểm tra tên đăng nhập và mật khẩu và thử lại sau.');
+    });
 }
 function loadTrades(){
     axios.get('http://localhost:3000/trades').then((res) =>{
@@ -86,7 +86,7 @@ function registerUser() {
         alert('Đăng ký thành công!');
     }).catch(error => {
         console.error(error);
-        alert('Đăng ký không thành công. Vui lòng thử lại sau.');
+        alert('?Đăng ký không thành công. Vui lòng thử lại sau.');
     });
 }
 
