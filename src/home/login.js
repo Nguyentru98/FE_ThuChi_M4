@@ -56,7 +56,7 @@ function checkUser(){
         axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
         // Xử lý dữ liệu trả về từ server nếu cần
         alert('Đăng nhập thành công!');
-        loadTrades();
+        loadHome();
     }).catch(error => {
         console.error(error);
         alert('Đăng nhập không thành công. Vui lòng kiểm tra tên đăng nhập và mật khẩu và thử lại sau.');
