@@ -45,12 +45,8 @@ function listTrade() {
          <h2 class="text-center">Add Edit Transaction</h2>
          <form>
             <div class="form-group">
-               <label for="">ID</label>
-               <input type="text" class="form-control" id="id" aria-describedby="emailHelp" placeholder="Enter ID">
-            </div>
-            <div class="form-group">
                <label for="">Name</label>
-               <input type="text" class="form-control" id="name" placeholder="Name">
+               <input type="text" class="form-control" id="name" placeholder="Trading name">
             </div>
             <div class="form-group">
                <label for="">Amount</label>
@@ -62,11 +58,7 @@ function listTrade() {
             </div>
             <div class="form-group">
                <label for="">Type</label>
-               <input type="text" class="form-control" id="type" placeholder="Type">
-            </div>
-            <div class="form-group">
-               <label for="">currentMoney</label>
-               <input type="text" class="form-control" id="currentMoney" placeholder="currentMoney">
+               <input type="text" class="form-control" id="type" placeholder="Transaction type">
             </div>
             <div class="d-flex justify-content-start">
                <button type="button" onclick="save()" class="btn btn-primary mt-4 mr-2">Save</button> 
