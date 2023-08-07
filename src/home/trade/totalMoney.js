@@ -1,5 +1,5 @@
 function totalPay() {
-    axios.get('http://localhost:3000/trades/?type=chi').then((res) => {
+    axios.get('http://localhost:3000/trades/?type=Pay').then((res) => {
         let data = res.data
         let sumPay = 0;
         for (let i = 0; i < data.length; i++) {
@@ -20,7 +20,7 @@ function totalPay() {
 }
 
 function totalRevenue() {
-    axios.get('http://localhost:3000/trades/?type=thu').then((res) => {
+    axios.get('http://localhost:3000/trades/?type=Revenue').then((res) => {
         let data = res.data
         let sumRevenue = 0;
         for (let i = 0; i < data.length; i++) {
@@ -71,13 +71,13 @@ async function totalMoney() {
     
   
     try {
-      const revenueResponse = await axios.get('http://localhost:3000/trades/?type=thu');
+      const revenueResponse = await axios.get('http://localhost:3000/trades/?type=Revenue');
       const revenueData = revenueResponse.data;
       for (let i = 0; i < revenueData.length; i++) {
         sumRevenue += revenueData[i].amount;
       }
   
-      const payResponse = await axios.get('http://localhost:3000/trades/?type=chi');
+      const payResponse = await axios.get('http://localhost:3000/trades/?type=Pay');
       const payData = payResponse.data;
       for (let i = 0; i < payData.length; i++) {
         sumPay += payData[i].amount;
