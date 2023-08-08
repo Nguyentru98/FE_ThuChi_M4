@@ -5,7 +5,6 @@ function search() {
 
     axios.get(`http://localhost:3000/trades?date=${date}&type=${type}&name=${name}`).then((res) => {
         let traders = res.data;
-        console.log(traders)
         let str ='';
         traders.map(item => {
             str += `
@@ -16,7 +15,7 @@ function search() {
                         <td>${item.type}</td>
                         <td>${item.amount}</td>
                         <td> <a class="btn btn-sm btn-primary" href="${item.id}">EDIT</a>
-                                <a class="btn btn-sm btn-primary" href="${item.id}">DELETE</a>
+                            <a class="btn btn-sm btn-primary" href="${item.id}">DELETE</a>
                         </td>
                         
                     </tr>`
