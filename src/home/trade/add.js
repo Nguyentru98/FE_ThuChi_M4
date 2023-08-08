@@ -1,5 +1,4 @@
 function save() {
-    console.log(11111111)
     let data = {
         userId: document.getElementById('userAE').value,
         name: document.getElementById('nameAE').value,
