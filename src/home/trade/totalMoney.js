@@ -52,10 +52,6 @@ async function totalMoney() {
       let str = `<p class="mb-2">Total Balance</p>
               <h6 class="mb-0">$ ${totalMoney}</h6>`;
 
-        console.log("totalMoney");
-        console.log(totalMoney);
-        console.log(str);
-
       document.getElementById('totalMoney').innerHTML = str;
     } catch (error) {
       console.error(error);

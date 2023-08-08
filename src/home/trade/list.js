@@ -13,8 +13,8 @@ function listTrade() {
                         <td>${item.type}</td>
                         <td>${item.amount}</td>
                         <td>${item.userId}</td>
-                        <td> <a class="btn btn-sm btn-primary" href="onclick="showFormEdit(${item.id})">EDIT</a>
-                             <a class="btn btn-sm btn-primary" href=""onclick="deleteTrade(${item.id})">DELETE</a>
+                        <td> <a class="btn btn-sm btn-primary" onclick="showFormEdit(${item.id})">EDIT</a>
+                             <a class="btn btn-sm btn-primary" onclick="deleteTrade(${item.id})">DELETE</a>
                         </td>
                         
                     </tr>`

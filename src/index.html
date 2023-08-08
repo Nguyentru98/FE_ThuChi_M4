@@ -33,6 +33,8 @@
     <script src="../src/home/trade/list.js"></script>
     <script src="../src/home/trade/totalMoney.js"></script>
     <script src="../src/home/trade/totalMoney.js"></script>
+    <script src="../src/home/trade/add.js"></script>
+    <script src="../src/home/trade/delete.js"></script>
 </head>
 
 <body>
@@ -233,27 +235,42 @@
 
                         <h5 class="mb-4">Add Edit Trade</h5>
                         <form>
+
                             <div class="mb-3">
-                                <label for="exampleInputEmail1" class="form-label">Name</label>
-                                <input type="text" class="form-control" id="nameAE"
+                                <label for="exampleInputPassword1" class="form-label">ID User</label>
+                                <input type="text" class="form-control" id="userAE">
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleInputPassword1" class="form-label">Trading Name</label>
+                                <input type="text" class="form-control" id="nameAE">
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleInputPassword1" class="form-label">Date</label>
+                                <input type="date" class="form-control" id="dateAE"
                                     aria-describedby="emailHelp">
                                 <div id="emailHelp" class="form-text">
                                 </div>
                             </div>
                             <div class="mb-3">
                                 <label for="exampleInputPassword1" class="form-label">Amount</label>
-                                <input type="text" class="form-control" id="amount">
+                                <input type="text" class="form-control" id="amountAE">
+                            </div>
+                           
+                            <div class="mb-3">
+                                <label for="exampleInputPassword1" class="form-label">Transaction Type</label>
+                                <select class="form-select mb-3" aria-label="Default select example" id="typeAE">
+                                    <option value="1">Revenue</option>
+                                    <option value="2">Pay</option>
+                                </select>
                             </div>
                             <div class="mb-3">
-                                <label for="exampleInputPassword1" class="form-label">Date</label>
-                                <input type="text" class="form-control" id="dateAdd">
+                                <label for="exampleInputPassword1" class="form-label">ID Trade Type</label>
+                                <input type="text" class="form-control" id="tradeTypeAE">
                             </div>
-                            <div class="mb-3">
-                                <label for="exampleInputPassword1" class="form-label">Type</label>
-                                <input type="text" class="form-control" id="typeAE">
-                            </div>
-                            <button type="submit" class="btn btn-primary">Save</button>
                         </form>
+                        <button class="btn btn-primary" onclick="save()">Save</button>
+
+                        
                     </div>
                 </div>
 
