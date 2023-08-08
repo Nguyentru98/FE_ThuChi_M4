@@ -6,37 +6,48 @@
     axios.get(API_URL).then((res) => {
         let data = res.data;
         console.log(res.data)
-        let str = `<table class="table text-start align-middle table-bordered table-hover mb-0">`;
-        str += `
+        let str = ``;
+        str += `<table class="table text-start align-middle table-bordered table-hover mb-0">
                             <thead>
                                 <tr class="text-dark">
-                                    <th scope="col"><input class="form-check-input" type="checkbox"></th>
-                                    <th scope="col">Name</th>
-                                    <th scope="col">Amount</th>
-                                    <th scope="col">Customer</th>
-                                    <th scope="col">Amount</th>
-                                    <th scope="col">Status</th>
-                                    <th scope="col">Action</th>
+                                    <th scope="col">ID</th>
+                                    <th scope="col">Khoản</th>
+                                    <th scope="col">Số tiền bỏ ra</th>
+                                    <th scope="col">Ngày</th>
+                                   
+                                    <th scope="col">Trạng thái</th>
+                                    <th scope="col">Chi khoản gì</th>
+                                   
+                                    <th scope="col">Số dư </th>
+                                    <th scope="col">Lựa chọn</th>
                                 </tr>
                             </thead>`
         data.map(item => {
             str += `<tr>
-                                    <td><input class="form-check-input" type="checkbox"></td>
+                                    <td>${item.id}</td>
                                     <td>${item.name}</td>
-                                    <td>${item.amount}</td>
+                                    <td>${item.amount} VNĐ</td>
                                     <td>${item.date}</td>
                                     <td>${item.type}</td>
-                                    <td>${item.user.currentMoney}</td>
-                                    <td>Paid</td>
-                                    <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
+                                    <td>${item.tradeType.name}</td>
+                                    <td>${item.user.currentMoney} VNĐ</td>
+                                    <td>
+                                    <div class="d-flex justify-content-center ">
+<!--                                  <button onclick="showFromAdd()" class="btn btn-primary me-1"><i class="fa-sharp fa-solid fa-circle-plus"></i></button>-->
+                                 <button onclick="showFromEdit(${item.id})" class="btn btn-primary me-1"><i class="fa-sharp fa-solid fa-pen"></i></button>
+                                  <button onclick="deleteTrade(${item.id})" class="btn btn-primary me-1"><i class="fa-solid fa-trash"></i></button>
+
+                                </div>
+</td>
+                                   
+                                    
                                 </tr>
-                `
-        })
-        str += `</table>`
+                
+       </table>`
         document.getElementById('display').innerHTML = str;
     })
+    })
 }
-
     function save() {
     let data = {
     id: document.getElementById('id').value,
@@ -49,51 +60,15 @@
 
 
     axios.post(API_URL, data).then((res) => {
-    load();
+    loadHome();
 });
 }
 
-    function showFromAdd() {
-    let str = `
-      <div class="mx-auto card p-4 my-4 w-75 shadow-lg rounded">
-         <h2 class="text-center">Add Transaction</h2>
-         <form>
-            <div class="form-group">
-               <label for="">ID</label>
-               <input type="text" class="form-control" id="id" aria-describedby="emailHelp" placeholder="Enter ID">
-            </div>
-            <div class="form-group">
-               <label for="">Name</label>
-               <input type="text" class="form-control" id="name" placeholder="Name">
-            </div>
-            <div class="form-group">
-               <label for="">Amount</label>
-               <input type="text" class="form-control" id="amount" placeholder="Amount">
-            </div>
-            <div class="form-group">
-               <label for="">Date</label>
-               <input type="date" class="form-control" id="date" placeholder="Date">
-            </div>
-            <div class="form-group">
-               <label for="">Type</label>
-               <input type="text" class="form-control" id="type" placeholder="Type">
-            </div>
-            <div class="form-group">
-               <label for="">currentMoney</label>
-               <input type="text" class="form-control" id="currentMoney" placeholder="currentMoney">
-            </div>
-            <div class="d-flex justify-content-start">
-               <button type="button" onclick="save()" class="btn btn-primary mt-4 mr-2">Xác nhận</button>
-               <button type="button" class="btn btn-secondary mt-4">Thoát</button>
-            </div>
-         </form>
-      </div>`;
-    document.getElementById('display').innerHTML = str;
-}
+
 
     function deleteTrade(id) {
     axios.delete(API_URL + `/${id}`).then((res) => {
-        load();
+        loadHome();
     })
 }
 
@@ -132,7 +107,7 @@
 
     axios.put(`${API_URL}/${data.id}`, data).then((res) => {
     axios.get(API_URL).then((res) => {
-    load();
+    loadHome();
 })
 })
 }
