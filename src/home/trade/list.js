@@ -1,39 +1,25 @@
 
-    let API_URL = 'http://localhost:3000/trades';
-    load()
-
-    function load() {
-    axios.get(API_URL).then((res) => {
+function listTrade() {
+    axios.get('http://localhost:3000/trades').then((res) => {
         let data = res.data;
         console.log(res.data)
-        let str = `<table class="table text-start align-middle table-bordered table-hover mb-0">`;
-        str += `
-                            <thead>
-                                <tr class="text-dark">
-                                    <th scope="col"><input class="form-check-input" type="checkbox"></th>
-                                    <th scope="col">Name</th>
-                                    <th scope="col">Amount</th>
-                                    <th scope="col">Customer</th>
-                                    <th scope="col">Amount</th>
-                                    <th scope="col">Status</th>
-                                    <th scope="col">Action</th>
-                                </tr>
-                            </thead>`
+        let str ='';
         data.map(item => {
-            str += `<tr>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td>${item.name}</td>
-                                    <td>${item.amount}</td>
-                                    <td>${item.date}</td>
-                                    <td>${item.type}</td>
-                                    <td>${item.user.currentMoney}</td>
-                                    <td>Paid</td>
-                                    <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
-                                </tr>
-                `
+            str += `
+            <tr>
+                        <td><input class="form-check-input" type="checkbox"></td>
+                        <td>${item.date}</td>
+                        <td>${item.name}</td>
+                        <td>${item.type}</td>
+                        <td>${item.amount}</td>
+                        <td>${item.userId}</td>
+                        <td> <a class="btn btn-sm btn-primary" href="onclick="showFormEdit(${item.id})">EDIT</a>
+                             <a class="btn btn-sm btn-primary" href=""onclick="deleteTrade(${item.id})">DELETE</a>
+                        </td>
+                        
+                    </tr>`
         })
-        str += `</table>`
-        document.getElementById('display').innerHTML = str;
+        document.getElementById('list').innerHTML = str;
     })
 }
 
@@ -56,15 +42,11 @@
     function showFromAdd() {
     let str = `
       <div class="mx-auto card p-4 my-4 w-75 shadow-lg rounded">
-         <h2 class="text-center">Add Transaction</h2>
+         <h2 class="text-center">Add Edit Transaction</h2>
          <form>
             <div class="form-group">
-               <label for="">ID</label>
-               <input type="text" class="form-control" id="id" aria-describedby="emailHelp" placeholder="Enter ID">
-            </div>
-            <div class="form-group">
                <label for="">Name</label>
-               <input type="text" class="form-control" id="name" placeholder="Name">
+               <input type="text" class="form-control" id="name" placeholder="Trading name">
             </div>
             <div class="form-group">
                <label for="">Amount</label>
@@ -76,22 +58,17 @@
             </div>
             <div class="form-group">
                <label for="">Type</label>
-               <input type="text" class="form-control" id="type" placeholder="Type">
-            </div>
-            <div class="form-group">
-               <label for="">currentMoney</label>
-               <input type="text" class="form-control" id="currentMoney" placeholder="currentMoney">
+               <input type="text" class="form-control" id="type" placeholder="Transaction type">
             </div>
             <div class="d-flex justify-content-start">
-               <button type="button" onclick="save()" class="btn btn-primary mt-4 mr-2">Xác nhận</button>
-               <button type="button" class="btn btn-secondary mt-4">Thoát</button>
+               <button type="button" onclick="save()" class="btn btn-primary mt-4 mr-2">Save</button> 
             </div>
          </form>
       </div>`;
-    document.getElementById('display').innerHTML = str;
+    document.getElementById('formAdd').innerHTML = str;
 }
 
-    function deleteTrade(id) {
+function deleteTrade(id) {
     axios.delete(API_URL + `/${id}`).then((res) => {
         load();
     })
