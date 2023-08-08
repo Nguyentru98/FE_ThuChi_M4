@@ -73,10 +73,10 @@ async function totalMoney() {
     try {
       const revenueResponse = await axios.get('http://localhost:3000/trades/?type=thu');
       const revenueData = revenueResponse.data;
+        console.log(revenueResponse.data)
       for (let i = 0; i < revenueData.length; i++) {
         sumRevenue += revenueData[i].amount;
       }
-  
       const payResponse = await axios.get('http://localhost:3000/trades/?type=chi');
       const payData = payResponse.data;
       for (let i = 0; i < payData.length; i++) {

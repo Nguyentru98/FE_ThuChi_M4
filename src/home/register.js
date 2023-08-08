@@ -6,8 +6,8 @@ function registerUser() {
     };
 
     axios.post('http://localhost:3000/register', data).then(res => {
-        console.log(res.data)
         alert('Đăng ký thành công!');
+        loadLogin()
     }).catch(error => {
         console.error(error);
         alert('Đăng ký không thành công. Vui lòng thử lại sau.');
@@ -43,7 +43,7 @@ function registerForm(){
                         <div class="d-flex align-items-center justify-content-between mb-4">
                             <div class="form-check">
                                 <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                            
                             </div>
                             <button onclick="registerUser()">Sign in</button>
                         </div>
